@@ -4,9 +4,6 @@
 import serial
 import time
 import sys
-import cv2
-import numpy as np
-from imutils.video import VideoStream
 
 class PiLo:
 
@@ -42,18 +39,7 @@ class PiLo:
 
 if __name__ == "__main__":
 
-    stream = VideoStream(0)
-
-    print(stream)
-
-    frame = stream.read()
-
-    print(frame)
-
-    file = open("test.MJPG", "wb")
-    file.write(frame)
-
-    sys.exit(0)
+    bot = Bot()
 
     p = PiLo()
 
@@ -61,20 +47,8 @@ if __name__ == "__main__":
     wheelCircumference = 208
 
     MMPerFoot = 304.8
-    
+
     p.sendCommand(0, 1, 1) #this shouldnt move the robot, but will warm up the servos
-    
-    desiredDistanceInFeet = 1.5
-    desiredDistanceInMM = desiredDistanceInFeet * MMPerFoot
-    desiredRotations = desiredDistanceInMM / wheelCircumference
-    ticks = round(desiredRotations * ticksPerRotation)
-    p.sendCommand(0, ticks, ticks)
-    time.sleep(5)
-
-    desiredRotations = 0.4
-    ticks = round(desiredRotations * ticksPerRotation)
-    p.sendCommand(0, -ticks, ticks)
-    time.sleep(5)
 
     desiredDistanceInFeet = 1.5
     desiredDistanceInMM = desiredDistanceInFeet * MMPerFoot
@@ -110,6 +84,18 @@ if __name__ == "__main__":
     desiredRotations = 0.4
     ticks = round(desiredRotations * ticksPerRotation)
     p.sendCommand(0, -ticks, ticks)
-    time.sleep(5)    
+    time.sleep(5)
+
+    desiredDistanceInFeet = 1.5
+    desiredDistanceInMM = desiredDistanceInFeet * MMPerFoot
+    desiredRotations = desiredDistanceInMM / wheelCircumference
+    ticks = round(desiredRotations * ticksPerRotation)
+    p.sendCommand(0, ticks, ticks)
+    time.sleep(5)
+
+    desiredRotations = 0.4
+    ticks = round(desiredRotations * ticksPerRotation)
+    p.sendCommand(0, -ticks, ticks)
+    time.sleep(5)
 
     print("Done")
