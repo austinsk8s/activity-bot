@@ -32,6 +32,9 @@ class Bot:
         self.ser.flush()
         return time.time()
 
+    def warmUp(self):
+        self.sendCommand(0, 1, 1)
+
     def sendCommand(self, t, l, r):
         print("Command type: " + ["TICK","SPEED"][t])
         com = ["MOVE","GO"][t] + ":{}:{}\r".format(l, r)
