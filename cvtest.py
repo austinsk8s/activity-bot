@@ -1,8 +1,6 @@
 #!/usr/bin/python2.7
 #PiLO.py
 #Python version of PiLo
-import serial
-import time
 import sys
 from Bot import Bot
 

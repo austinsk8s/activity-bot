@@ -38,7 +38,8 @@ class Bot:
     def sendCommand(self, t, l, r):
         print("Command type: " + ["TICK","SPEED"][t])
         com = ["MOVE","GO"][t] + ":{}:{}\r".format(l, r)
-        return timeWritten = self.sendLine(com)
+        timeWritten = self.sendLine(com)
+        return timeWritten
 
     def staticForward(self, desiredDistanceInFeet):
         desiredDistanceInMM = desiredDistanceInFeet * self.MMPerFoot
