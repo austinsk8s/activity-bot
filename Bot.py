@@ -1,4 +1,5 @@
 #!/usr/bin/python2.7
+from __future__ import division
 import serial
 import time
 
@@ -63,13 +64,14 @@ class Bot:
         p.sendCommand(1, 0, 0)
 
     def turnLeft(self, degrees):
-        rotations = degrees / 180
+        rotations = (degrees / 180) - 0.1
 	ticks = round(rotations * self.ticksPerRotation)
         self.sendCommand(0, -ticks, ticks)
         time.sleep(5)
 
+
     def turnRight(self, degrees):
-        rotations = degrees / 180
+        rotations = (degrees / 180) - 0.1
         ticks = round(rotations * self.ticksPerRotation)
         self.sendCommand(0, ticks, -ticks)
         time.sleep(5)
