@@ -63,13 +63,13 @@ class Bot:
         p.sendCommand(1, 0, 0)
 
     def turnLeft(self, degrees):
-        rotations = degees / 180
-        ticks = round(desiredRotations * self.ticksPerRotation)
+        rotations = degrees / 180
+	ticks = round(rotations * self.ticksPerRotation)
         self.sendCommand(0, -ticks, ticks)
         time.sleep(5)
 
     def turnRight(self, degrees):
-        rotations = degees / 180
-        ticks = round(desiredRotations * self.ticksPerRotation)
+        rotations = degrees / 180
+        ticks = round(rotations * self.ticksPerRotation)
         self.sendCommand(0, ticks, -ticks)
         time.sleep(5)
