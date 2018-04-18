@@ -8,6 +8,7 @@ class Bot:
     ticksPerRotation    = 64
     wheelCircumference  = 208
     MMPerFoot           = 304.8
+    commandSent         = False
 
     def __init__(self):
         print("Loading up serial communication...")
@@ -31,7 +32,21 @@ class Bot:
                 time.sleep(0.000001)
         self.ser.write(output.encode('utf-8'))
         self.ser.flush()
+        commandSent = True
         return time.time()
+
+
+    def commandFinished(self):
+        while commandSent:
+            response = self.ser.readline()
+
+            if len(response) > 0 and "done" in response.lower():
+                print("command complete")
+                commandSent = False
+                return True;
+
+        return False
+
 
     def warmUp(self):
         self.sendCommand(0, 1, 1)
