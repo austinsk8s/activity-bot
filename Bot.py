@@ -65,8 +65,6 @@ class Bot:
         desiredRotations = desiredDistanceInMM / self.wheelCircumference
         ticks = round(desiredRotations * self.ticksPerRotation)
         self.sendCommand(0, ticks, ticks)
-        if self.commandFinished():
-            return
 
 
     # speed is the servos ticks/second
@@ -89,13 +87,9 @@ class Bot:
         rotations = (degrees / 180) - 0.1
 	ticks = round(rotations * self.ticksPerRotation)
         self.sendCommand(0, -ticks, ticks)
-        if self.commandFinished():
-            return
 
 
     def turnRight(self, degrees):
         rotations = (degrees / 180) - 0.1
         ticks = round(rotations * self.ticksPerRotation)
         self.sendCommand(0, ticks, -ticks)
-        if self.commandFinished():
-            return
