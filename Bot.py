@@ -32,17 +32,17 @@ class Bot:
                 time.sleep(0.000001)
         self.ser.write(output.encode('utf-8'))
         self.ser.flush()
-        commandSent = True
+        self.commandSent = True
         return time.time()
 
 
     def commandFinished(self):
-        while commandSent:
+        while self.commandSent:
             response = self.ser.readline()
 
             if len(response) > 0 and "done" in response.lower():
                 print("command complete")
-                commandSent = False
+                self.commandSent = False
                 return True;
 
         return False
