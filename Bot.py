@@ -44,6 +44,9 @@ class Bot:
                 print("command complete")
                 self.commandSent = False
                 return True;
+            else:
+                print(response)
+                return False
 
         return False
 
