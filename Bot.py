@@ -78,7 +78,7 @@ class Bot:
         timeWritten = self.sendCommand(1, speed, speed)
         # And use that value to sleep after going a specific amount of time
         timeToStart = timeStarted - timeWritten
-        timeToSleep = timeRequired - timeToStart
+        timeToSleep = timeRequired + timeToStart
         time.sleep(timeToSleep)
         self.sendCommand(1, 0, 0)
 
