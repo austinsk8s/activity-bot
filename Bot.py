@@ -84,7 +84,7 @@ class Bot:
 
     def turnLeft(self, degrees):
         rotations = (degrees / 180) - 0.1
-	    ticks = round(rotations * self.ticksPerRotation)
+	ticks = round(rotations * self.ticksPerRotation)
         self.sendCommand(0, -ticks, ticks)
         if self.commandFinished():
             return
