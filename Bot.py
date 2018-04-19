@@ -79,7 +79,7 @@ class Bot:
         timeToStart = timeStarted - timeWritten
         timeToSleep = timeRequired - timeToStart
         time.sleep(timeToSleep)
-        p.sendCommand(1, 0, 0)
+        self.sendCommand(1, 0, 0)
 
 
     def turnLeft(self, degrees):
