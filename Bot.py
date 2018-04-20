@@ -81,15 +81,26 @@ class Bot:
         timeToSleep = timeRequired + timeToStart
         time.sleep(timeToSleep)
         self.sendCommand(1, 0, 0)
-
-
-    def turnLeft(self, degrees):
+		
+	def speedForwardCircle(self, speedLeft, speedRight, desiredDistanceInFeet):
+		desiredDistanceInMM = desiredDistanceInFeet * self.MMPerFoot
+		desiredRotations = desiredDistanceInMM / self.wheelCircumference
+		ticks = desiredRotations * self.ticksPerRotation
+		timeRequired = ticks / speed
+		timeStarted = time.time()
+		timeWritten = self.sendCommand(1, speedLeft, speedRight)
+		timeToStart = timeStarted - timeWritten
+        timeToSleep = timeRequired + timeToStart
+        time.sleep(timeToSleep)
+        self.sendCommand(1, 0, 0)
+		
+	def turnLeft(self, degrees):
         rotations = (degrees / 180) - 0.1
-	ticks = round(rotations * self.ticksPerRotation)
-        self.sendCommand(0, -ticks, ticks)
+		ticks = round(rotations * self.ticksPerRotation)
+        self.sendCommand(0, -ticks - 1, ticks)
 
 
     def turnRight(self, degrees):
         rotations = (degrees / 180) - 0.1
         ticks = round(rotations * self.ticksPerRotation)
-        self.sendCommand(0, ticks, -ticks)
+        self.sendCommand(0, ticks, -ticks + 1)

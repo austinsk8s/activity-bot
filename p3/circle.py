@@ -14,13 +14,6 @@ if __name__ == "__main__":
 
     bot.warmUp()
     time.sleep(5)
-    # this part needs work
-    # you should  make a new function in Bot.py
-    # that works like bot.speedForward(speed, desiredDistanceInFeet),
-    # but allows for you to set two separate speeds in
-    # timeWritten = self.sendCommand(1, speed, speed) like
-    # timeWritten = self.sendCommand(1, leftWheelSpeed, rightWheelspeed)
-    # so that the wheels go two separate speeds to make the circle
-    # or you could just hard code this part... either way is fine
+	speedForwardCircle(80, 0.825, 15.7)
     time.sleep(5)
     print("Done")
